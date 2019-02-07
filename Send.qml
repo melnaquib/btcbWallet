@@ -12,6 +12,7 @@ Page {
 
     property string wallet
     property bool newWallet: !Util.isStrNotEmpty(wallet)
+    property string accountCreated;
 
     background: Item{}
 
@@ -30,6 +31,22 @@ Page {
         anchors.margins: 10
 
         columns: 1
+
+        Button {
+            text: "create Account"
+            onClicked:{
+               accountCreated =  Rpc.createAccount(wallet);
+                console.log(accountCreated)
+            }
+        }
+        Button {
+            text: "Account Representative"
+            onClicked: {
+                var res = Rpc.accountRepresentative(accountCreated);
+                console.log(res);
+              }
+        }
+
 
         Label {text: qsTr("Receiver")}
 

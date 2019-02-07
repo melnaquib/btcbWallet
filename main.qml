@@ -55,6 +55,7 @@ ApplicationWindow {
         Send {
             id: sendPage
             padding: margin
+            wallet: mainWin.wallet
         }
     }
 

@@ -56,6 +56,30 @@ function account_history(account) {
     return res;
 }
 
+
+function createAccount(wallet) {
+    var args = {
+        action: "account_create",
+        wallet: wallet
+    }
+    var res = _rpc(args);
+    console.log(res.account)
+    return res.account ;
+}
+
+function accountRepresentative(account) {
+    var args = {
+        action : "account_representative",
+        account : account
+    }
+    var res = _rpc(args);
+    console.log(res.representative)
+    console.log(res.error)
+    return res.representative;
+}
+
+
+
 function account_pending(account) {
     if (! account) return [];
     var args = {
