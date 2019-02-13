@@ -37,6 +37,7 @@ Page {
             id: passwd_confirm
             Layout.fillWidth: true
             echoMode: TextField.PasswordEchoOnEdit
+            visible: login.newWallet
             placeholderText: qsTr("Confirm Password")
             visible: newWallet
         }
@@ -45,6 +46,7 @@ Page {
             id: seed
             Layout.fillWidth: true
             placeholderText: qsTr("Seed")
+            visible: login.newWallet
 //            echoMode: TextField.PasswordEchoOnEdit
             validator: RegExpValidator { regExp: /[0-9A-Fa-f]+/ }
             visible: newWallet

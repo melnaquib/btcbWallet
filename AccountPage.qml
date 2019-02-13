@@ -8,7 +8,7 @@ import "rpc.js" as Rpc
 
 Page {
 
-    id: sendPage
+    id: accountPage
 
     property string wallet
     property var accs: walletAccounts(wallet)
@@ -20,7 +20,7 @@ Page {
         ToolButton {
             icon.name: "document-new"
             onClicked: {
-                var newAcc = Rpc.createNextAccount();
+                var newAcc = Rpc.createNextAccount(wallet);
                 msg.show(msg.mode_information, qsTr("Account Created"), qsTr("New account has been created;\n%1").arg(newAcc))
                 accountsComboBox.model = Rpc.walletAccounts(wallet);
             }
@@ -37,7 +37,7 @@ Page {
         ToolButton {
             icon.name: "edit-copy"
             onClicked: {
-                proxy.toClipboard(acccount);
+                proxy.toClipboard(accountsComboBox.currentText);
                 msg.show(msg.mode_information, qsTr("Address Copied!"), qsTr("Current account address has been copied to clipboard."))
             }
         }
