@@ -14,5 +14,21 @@
         <file>TxsList.qml</file>
         <file>ValidatorSeed.qml</file>
         <file>ValidatorAddress.qml</file>
+        <file>images/icons/find.png</file>
+        <file>images/icons/logo.png</file>
+        <file>images/icons/logout.png</file>
+        <file>images/icons/minus.png</file>
+        <file>images/icons/plus.png</file>
+        <file>images/icons/recv.png</file>
+        <file>images/icons/reload.png</file>
+        <file>images/icons/send.png</file>
+        <file>images/icons/settings.png</file>
+        <file>images/bg (copy).png</file>
+        <file>images/bg.png</file>
+        <file>AccBook.js</file>
+        <file>accs.js</file>
+        <file>fmt.js</file>
+        <file>rpc.js</file>
+        <file>InputDialog.qml</file>
     </qresource>
 </RCC>

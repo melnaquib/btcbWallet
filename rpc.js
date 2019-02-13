@@ -2,20 +2,36 @@
 .import "accs.js" as Accs
 .import "AccBook.js" as AccBook
 
+function versionUpdate(currentDate){
+    var updateUrl = "https://bitcoin.black/api/BtcbWalletVersion";
+    try {
+        var xhr = new XMLHttpRequest();
+        xhr.get("GET", updateUrl, false);
+        xhr.send();
+        var rsp = xhr.responseText;
+        var res = JSON.parse(rsp);
+        var shouldUpdate = new Date(res.date) > currentDate;
+        return res;
+    } catch (ex) {};
+}
 
 function _rpc(args, cb){
     var host = "localhost";
-    var port = "17076";
+//    var port = "17076";
+    var port = "15000";
     var url = "http://" + host + ":" + port;
     var method="POST"
 
-    var xhr = new XMLHttpRequest();
-    xhr.open(method, url, false);
-    xhr.send(JSON.stringify(args));
+    try {
+        var xhr = new XMLHttpRequest();
+        xhr.open(method, url, false);
+        xhr.send(JSON.stringify(args));
 
-    var rsp = xhr.responseText;
-    var res = JSON.parse(rsp);
-    return res;
+        var rsp = xhr.responseText;
+        var res = JSON.parse(rsp);
+        return res;
+    } catch (ex) {};
+    return {error: true};
 }
 
 function walletAccounts(wallet) {
@@ -78,7 +94,18 @@ function accountRepresentative(account) {
     return res.representative;
 }
 
-
+function setAccountRepresentative(wallet, account, repr) {
+    var args = {
+        action: "account_representative_set",
+        wallet: wallet,
+        account: account,
+        representative: repr
+    }
+    var res = _rpc(args);
+    console.log(res.representative)
+    console.log(res.error)
+    return res.representative;
+}
 
 function account_pending(account) {
     if (! account) return [];

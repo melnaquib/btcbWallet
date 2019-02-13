@@ -2,15 +2,17 @@ import QtQuick 2.12
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 
-Popup {
+Dialog {
     id: msgBox
     property alias content: content
 
     anchors.centerIn: parent
 
-    property alias title: title.text
+//    property alias title: title.text
     property alias msg: msg.text
     property alias icon: msg.text
+
+    property alias value: input.text
 
     property string mode
 
@@ -21,25 +23,32 @@ Popup {
     readonly property string mode_question: "question"
 
     Page {
-        header: Label {
-            id: title
-        }
+//        header: Label {
+//            id: title
+//        }
 
         GridLayout {
             id: content
             anchors.fill: parent
-            Button {
+            columns: 1
+            Label {
                 id: msg
-                flat: true
-                onClicked: msgBox.close()
-                icon.name: "dialog-" + mode
             }
+
+            TextField {
+                id: input
+                placeholderText: title
+                Layout.fillWidth: true
+            }
+
         }
 
     }
 
+    standardButtons: Dialog.Ok | Dialog.Cancel
+
     function show(amode, atitle, amsg) {
-        msgBox.mode = amode;
+        msgBox.mode = mode_question;
         msgBox.title = atitle;
         msgBox.msg = amsg;
         open();

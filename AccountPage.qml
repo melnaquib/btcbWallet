@@ -18,7 +18,7 @@ Page {
 
     header: RowLayout {
         ToolButton {
-            icon.name: "new"
+            icon.name: "document-new"
             onClicked: {
                 var newAcc = Rpc.createNextAccount();
                 msg.show(msg.mode_information, qsTr("Account Created"), qsTr("New account has been created;\n%1").arg(newAcc))
@@ -39,6 +39,18 @@ Page {
             onClicked: {
                 proxy.toClipboard(acccount);
                 msg.show(msg.mode_information, qsTr("Address Copied!"), qsTr("Current account address has been copied to clipboard."))
+            }
+        }
+
+        ToolButton {
+            icon.name: "network-transmit-receive"
+            text: qsTr("New Representative")
+            onClicked: {
+                var repr = Rpc.accountRepresentative(account);
+                console.log(repr);
+                reprDlg.show(msg.mode_information, qsTr("Representative"),
+                             qsTr("Please set representative for account\n%1\nCurrent Representative;\n%2").arg(account).arg(repr));
+                
             }
         }
 
@@ -64,4 +76,11 @@ Page {
     }
 
     MessageBox { id: msg }
+
+    InputDialog {
+        id: reprDlg
+        onAccepted :{
+            console.log(value);
+        }
+    }
 }

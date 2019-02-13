@@ -9,7 +9,7 @@ ApplicationWindow {
     visible: true
     width: 800
     height: 600
-    title: qsTr("Tabs")
+    title: qsTr("Beta")
 
     background: BtcbImgBg{}
     property int margin: 20
@@ -64,5 +64,6 @@ ApplicationWindow {
         anchors.top: parent.top
         anchors.right: parent.right
         text: checked ? qsTr("Light") : qsTr("Dark")
+        visible: false
     }
 }

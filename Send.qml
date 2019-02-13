@@ -32,20 +32,20 @@ Page {
 
         columns: 1
 
-        Button {
-            text: "create Account"
-            onClicked:{
-               accountCreated =  Rpc.createAccount(wallet);
-                console.log(accountCreated)
-            }
-        }
-        Button {
-            text: "Account Representative"
-            onClicked: {
-                var res = Rpc.accountRepresentative(accountCreated);
-                console.log(res);
-              }
-        }
+//        Button {
+//            text: "create Account"
+//            onClicked:{
+//               accountCreated =  Rpc.createAccount(wallet);
+//                console.log(accountCreated)
+//            }
+//        }
+//        Button {
+//            text: "Account Representative"
+//            onClicked: {
+//                var res = Rpc.accountRepresentative(accountCreated);
+//                console.log(res);
+//              }
+//        }
 
 
         Label {text: qsTr("Receiver")}

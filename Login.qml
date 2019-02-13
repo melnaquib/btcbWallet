@@ -38,6 +38,7 @@ Page {
             Layout.fillWidth: true
             echoMode: TextField.PasswordEchoOnEdit
             placeholderText: qsTr("Confirm Password")
+            visible: newWallet
         }
 
         TextField {
@@ -46,6 +47,7 @@ Page {
             placeholderText: qsTr("Seed")
 //            echoMode: TextField.PasswordEchoOnEdit
             validator: RegExpValidator { regExp: /[0-9A-Fa-f]+/ }
+            visible: newWallet
         }
 
     }
@@ -86,6 +88,11 @@ Page {
 
     Settings {
         property alias wallet: login.wallet
+    }
+
+    Component.onCompleted: {
+        console.log("W " + wallet);
+        console.log("W " + newWallet);
     }
 
     MessageBox { id: msg }
