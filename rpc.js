@@ -203,5 +203,16 @@ function unlockWallet(wallet, passwd) {
     }
 
     var res = _rpc(args);
-    return "1" == res.valid;
+    return "1" === res.valid;
+}
+
+function rcvPendingBlock(wallet, account, block) {
+    var args = {
+        action: "receive",
+        wallet:wallet,
+        account:account,
+        block:block
+    }
+    var res = _rpc(args);
+    return res.block ;
 }
