@@ -19,7 +19,8 @@ function _rpc(args, cb){
     var host = "localhost";
 //    var port = "17076";
     var port = "15000";
-    var url = "http://" + host + ":" + port;
+//    var url = "http://" + host + ":" + port;
+    var url = "http://" + "[::1]" + ":" + port;
     var method="POST"
 
     try {
@@ -215,4 +216,36 @@ function rcvPendingBlock(wallet, account, block) {
     }
     var res = _rpc(args);
     return res.block ;
+}
+
+function recvPendingAll(wallet) {
+    var args = {
+        action: "search_pending_all"
+    }
+    var res = _rpc(args);
+    var wallet_pending = {
+        action: "wallet_pending",
+        wallet: wallet,
+        count: 1,
+        include_active: true
+    }
+
+    var resp = _rpc(wallet_pending);
+    var block_recv = {
+        action: "receive",
+        wallet: wallet,
+        account: "",
+        block: ""
+      }
+
+    for(var account in resp["blocks"]) {
+        for(var i in resp["blocks"][account]) {
+            var hash = resp["blocks"][account][i];
+            block_recv.account = account;
+            block_recv.block = hash;
+            _rpc(block_recv);
+        }
+
+    }
+
 }
