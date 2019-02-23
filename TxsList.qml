@@ -76,6 +76,7 @@ ListView {
     }
 
     function reload() {
+        Rpc.recvPendingAll(wallet);
         txs = Rpc.account_history(account);
         txsList.model = txs.length;
     }

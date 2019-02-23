@@ -10,7 +10,7 @@ import "rpc.js" as Rpc
 Page {
     id: login
 
-    property string wallet: "083E6F2F7DFC6A9F2348C30881CDCB91FA8A779FA100E864F05B3EE472FA861A"
+    property string wallet
     property bool newWallet: newWalletBtn.checked
 //    property bool newWallet: true
 
@@ -114,6 +114,7 @@ Page {
     }
 
     Component.onCompleted: {
+        newWalletBtn.checked = !Util.isStrNotEmpty(wallet);
         console.log("W " + wallet);
         console.log("W " + newWallet);
     }
