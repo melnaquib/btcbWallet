@@ -56,6 +56,9 @@ ApplicationWindow {
             id: sendPage
             padding: margin
             wallet: mainWin.wallet
+            onBack: {
+                mainView.currentIndex = 1;
+            }
         }
     }
 
