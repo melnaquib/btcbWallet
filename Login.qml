@@ -10,7 +10,7 @@ import "rpc.js" as Rpc
 Page {
     id: login
 
-    property string wallet
+    property string wallet: "083E6F2F7DFC6A9F2348C30881CDCB91FA8A779FA100E864F05B3EE472FA861A"
     property bool newWallet: !Util.isStrNotEmpty(wallet)
 //    property bool newWallet: true
 
@@ -89,7 +89,7 @@ Page {
     }
 
     Settings {
-        property alias wallet: login.wallet
+//        property alias wallet: login.wallet
     }
 
     Component.onCompleted: {

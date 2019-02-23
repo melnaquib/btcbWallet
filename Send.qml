@@ -59,9 +59,11 @@ Page {
 
         Label {text: qsTr("Amount")}
 
-        SpinBox {
+        TextField {
             id: amount
             Layout.fillWidth: true
+            validator: IntValidator
+            property string value: text
         }
     }
 
@@ -80,7 +82,7 @@ Page {
 
         onRejected: {
             amount.value = 0;
-            recv.currentText = "";
+           // recv.currentText = "";
             back();
         }
     }
