@@ -49,7 +49,8 @@ ApplicationWindow {
             id: accountPage
             wallet: mainWin.wallet
             onSend: {
-                sendPage.sender = account;
+                sendPage.account = account;
+                sendPage.wallet = wallet;
                 mainView.currentIndex = 2;
             }
         }

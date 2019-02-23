@@ -12,16 +12,14 @@ Page {
 
     property string wallet
     property bool newWallet: !Util.isStrNotEmpty(wallet)
-    property string accountCreated;
+    property string account
 
     background: Item{}
 
-    property string sender
-
-    title: qsTr("Send From ") + sender
+    title: qsTr("Send From ") + account
 
     header: Label {
-        text: qsTr("Send From ") + sender
+        text: qsTr("Send From ") + account
     }
 
     GridLayout {
@@ -51,7 +49,7 @@ Page {
         Label {text: qsTr("Receiver")}
 
         ComboBox {
-            id: recv
+            id: recvTf
             editable: true
             Layout.fillWidth: true
             validator: ValidatorAddress{}
@@ -60,7 +58,7 @@ Page {
         Label {text: qsTr("Amount")}
 
         TextField {
-            id: amount
+            id: amountTf
             Layout.fillWidth: true
             validator: IntValidator
             property string value: text
@@ -71,8 +69,8 @@ Page {
         standardButtons: DialogButtonBox.Ok | DialogButtonBox.Cancel
 
         onAccepted: {
-            var ok = Rpc.send(recv.currentText, amount.value);
-            if(ok) {
+            var res = Rpc.send(wallet, account, recvTf.editText, amountTf.text);
+            if(res.block) {
                 msg.show(msg.mode_information, qsTr("Send Successful!"), qsTr("Send successful!"));
                 back();
             } else {

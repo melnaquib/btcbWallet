@@ -137,15 +137,18 @@ function createNextAccount(wallet) {
     return res.account;
 }
 
-function send(wallet, account, amount) {
+function send(wallet, source, destination, amount) {
+    var tempAmount = amount + ("000"*9);
     var args = {
         action: "send",
-        "wallet": wallet,
-        account: account,
-        amount: amount,
+        wallet: wallet,
+        source: source,
+        destination: destination,
+        amount: tempAmount
     }
 
     var res = _rpc(args);
+    return res;
 }
 
 function wallets(proxy) {
