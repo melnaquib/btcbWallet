@@ -11,7 +11,7 @@ Page {
     id: login
 
     property string wallet: "083E6F2F7DFC6A9F2348C30881CDCB91FA8A779FA100E864F05B3EE472FA861A"
-    property bool newWallet: !Util.isStrNotEmpty(wallet)
+    property bool newWallet: newWalletBtn.checked
 //    property bool newWallet: true
 
     background: Item{}
@@ -24,13 +24,14 @@ Page {
         width: parent.width
         anchors.margins: 10
 
-        columns: 1
+        columns: 2
 
         TextField {
             id: passwd
             Layout.fillWidth: true
             echoMode: TextField.PasswordEchoOnEdit
             placeholderText: qsTr("Password")
+            Layout.columnSpan: 2
         }
 
         TextField {
@@ -39,7 +40,8 @@ Page {
             echoMode: TextField.PasswordEchoOnEdit
             visible: login.newWallet
             placeholderText: qsTr("Confirm Password")
-            //visible: newWallet
+//            visible: newWallet
+            Layout.columnSpan: 2
         }
 
         TextField {
@@ -49,14 +51,33 @@ Page {
             visible: login.newWallet
 //            echoMode: TextField.PasswordEchoOnEdit
             validator: RegExpValidator { regExp: /[0-9A-Fa-f]+/ }
-            //visible: newWallet
+//            visible: newWallet
+        }
+
+        Button {
+            text: qsTr("Generate Random Seed")
+            visible: login.newWallet
+                onClicked: {
+                seed.text = "0000000000000000000000000000000000000000000000000000000000000000"
+            }
         }
 
     }
 
-    footer: Button {
-        text: qsTr(newWallet ? "Restore Seed" : " Unlock Wallet")
-        onClicked: newWallet ? onNewWallet(passwd.text, passwd_confirm.text, seed.text) : onLogin(passwd.text)
+    footer: RowLayout {
+        width: parent.width
+        Button {
+            text: qsTr(newWallet ? "Restore Seed" : " Unlock Wallet")
+            onClicked: newWallet ? onNewWallet(passwd.text, passwd_confirm.text, seed.text) : onLogin(passwd.text)
+            Layout.fillWidth: true
+        }
+
+        Button{
+            id: newWalletBtn
+            text: qsTr(checked ? "Cancel" : "New Wallet ...")
+            checkable: true
+            Layout.fillWidth: true
+        }
     }
 
     function onNewWallet(apasswd, apasswd_confirm, aseed) {
