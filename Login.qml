@@ -110,7 +110,7 @@ Page {
     }
 
     Settings {
-//        property alias wallet: login.wallet
+        property alias wallet: login.wallet
     }
 
     Component.onCompleted: {
