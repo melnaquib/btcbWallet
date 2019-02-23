@@ -219,6 +219,8 @@ function rcvPendingBlock(wallet, account, block) {
 }
 
 function recvPendingAll(wallet) {
+    console.log("dbg01");
+//    return;
     var args = {
         action: "search_pending_all"
     }

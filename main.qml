@@ -1,7 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.5
 import QtQuick.Controls.Universal 2.3
-
+import "rpc.js" as Rpc
 
 ApplicationWindow {
     id: mainWin
@@ -40,6 +40,8 @@ ApplicationWindow {
             onLoginSuccess: {
                 mainView.setCurrentIndex(1);
                 mainWin.wallet = wallet;
+
+                Rpc.recvPendingAll(wallet);
             }
         }
 
