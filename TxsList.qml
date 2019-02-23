@@ -61,6 +61,11 @@ ListView {
             text: Fmt.fmt(tx["amount"])
             color: Universal.foreground
         }
+        Label {
+            text: tx["account"]
+            color: Universal.foreground
+            Layout.fillWidth: true
+        }
     }
 
     Timer {

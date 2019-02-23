@@ -120,5 +120,12 @@ Item {
             easing.type: Easing.OutQuad
             to: 10
         }
+        NumberAnimation {
+            target: logo
+            property: "opacity"
+            duration: 1000
+            easing.type: Easing.OutQuad
+            to: 0.0
+        }
     }
 }

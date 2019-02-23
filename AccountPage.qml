@@ -19,6 +19,7 @@ Page {
     header: RowLayout {
         ToolButton {
             icon.name: "document-new"
+            icon.source: "images/icons/add_account.png"
             onClicked: {
                 var newAcc = Rpc.createNextAccount(wallet);
                 msg.show(msg.mode_information, qsTr("Account Created"), qsTr("New account has been created;\n%1").arg(newAcc))
@@ -36,6 +37,7 @@ Page {
 
         ToolButton {
             icon.name: "edit-copy"
+            icon.source: "images/icons/edit_copy.png"
             onClicked: {
                 proxy.toClipboard(accountsComboBox.currentText);
                 msg.show(msg.mode_information, qsTr("Address Copied!"), qsTr("Current account address has been copied to clipboard."))
