@@ -12,6 +12,7 @@ Item {
         id: bg
         source: themeLight ? "": "images/bg.png"
         anchors.fill: parent
+        fillMode: Image.PreserveAspectCrop
 
     }
 

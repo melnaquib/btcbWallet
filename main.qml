@@ -12,7 +12,7 @@ ApplicationWindow {
     title: qsTr("Beta")
 
     background: BtcbImgBg{}
-    property int margin: 20
+    property int margin: 0
 
     property alias light: lightCb.checked
     Universal.theme: light ? Universal.Light : Universal.Dark

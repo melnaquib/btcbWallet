@@ -44,17 +44,17 @@ Page {
             }
         }
 
-        ToolButton {
-            icon.name: "network-transmit-receive"
-            text: qsTr("New Representative")
-            onClicked: {
-                var repr = Rpc.accountRepresentative(account);
-                console.log(repr);
-                reprDlg.show(msg.mode_information, qsTr("Representative"),
-                             qsTr("Please set representative for account\n%1\nCurrent Representative;\n%2").arg(account).arg(repr));
+//        ToolButton {
+//            icon.name: "network-transmit-receive"
+//            text: qsTr("New Representative")
+//            onClicked: {
+//                var repr = Rpc.accountRepresentative(account);
+//                console.log(repr);
+//                reprDlg.show(msg.mode_information, qsTr("Representative"),
+//                             qsTr("Please set representative for account\n%1\nCurrent Representative;\n%2").arg(account).arg(repr));
                 
-            }
-        }
+//            }
+//        }
 
         ToolButton {
             text: qsTr("Send")

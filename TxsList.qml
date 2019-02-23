@@ -49,10 +49,10 @@ ListView {
             }
         }
 
-        Label {
-            text: tx.date
-            color: Universal.foreground
-        }
+//        Label {
+//            text: tx.date
+//            color: Universal.foreground
+//        }
         Label {
             text: txsList.getTxDescr(receive, tx["binding"])
             color: "white"
