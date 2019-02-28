@@ -51,7 +51,6 @@ function walletAccounts(wallet) {
         o.name = AccBook.getNameFromAcc(a);
         res.push(o);
     }
-
     return res;
 }
 
@@ -138,7 +137,7 @@ function createNextAccount(wallet) {
 }
 
 function send(wallet, source, destination, amount) {
-    var tempAmount = amount + ("000"*9);
+    var tempAmount = amount + "000".repeat(9);
     var args = {
         action: "send",
         wallet: wallet,

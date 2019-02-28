@@ -27,6 +27,7 @@ ListView {
         id: balanceLabel
         text: qsTr("Balance ") + Fmt.fmt(txsList.balance)
         padding: 20
+        color: Universal.foreground
     }
 
     delegate: RowLayout {
@@ -39,7 +40,7 @@ ListView {
             width: height
             height: txSymbolTxt.height
             radius: height / 2
-            color: receive ? "lightBlue" : "white"
+            color: receive ? "lightBlue" : "red"
             Text {
                 id: txSymbolTxt
                 anchors.centerIn: parent
@@ -54,11 +55,7 @@ ListView {
 //            color: Universal.foreground
 //        }
         Label {
-            text: txsList.getTxDescr(receive, tx["binding"])
-            color: "white"
-        }
-        Label {
-            text: Fmt.fmt(tx["amount"])
+            text: Fmt.fmt(tx.amount)
             color: Universal.foreground
         }
         Label {

@@ -18,6 +18,22 @@ Page {
 
     signal loginSuccess(string wallet)
 
+    Label {
+//            Layout.fillWidth: true
+        text: qsTr("bitcoin black")
+        color: "white"
+//        Layout.columnSpan: 2
+//        Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+        anchors.centerIn: parent
+        font {
+            pointSize: 32
+            bold: true
+            italic: true
+            family: "sans"
+        }
+    }
+
+
     GridLayout {
 //        anchors.fill: parent
         anchors.bottom: parent.bottom
@@ -25,6 +41,9 @@ Page {
         anchors.margins: 10
 
         columns: 2
+
+
+
 
         TextField {
             id: passwd

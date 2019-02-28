@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 import Qt.labs.settings 1.0
+import QtQuick.Controls.Universal 2.3
 
 import "util.js" as Util
 import "rpc.js" as Rpc
@@ -20,6 +21,7 @@ Page {
 
     header: Label {
         text: qsTr("Send From ") + account
+        color: Universal.foreground
     }
 
     GridLayout {
@@ -46,7 +48,11 @@ Page {
 //        }
 
 
-        Label {text: qsTr("Receiver")}
+        Label {
+            text: qsTr("Receiver")
+            color: Universal.foreground
+            Layout.margins: 10
+        }
 
         ComboBox {
             id: recvTf
@@ -55,12 +61,16 @@ Page {
             validator: ValidatorAddress{}
         }
 
-        Label {text: qsTr("Amount")}
+        Label {
+            text: qsTr("Amount");
+            color: Universal.foreground
+            Layout.margins: 10
+        }
 
         TextField {
             id: amountTf
             Layout.fillWidth: true
-            validator: IntValidator
+            validator: IntValidator{}
             property string value: text
         }
     }
