@@ -22,8 +22,11 @@ int main(int argc, char *argv[])
     UiProxy proxy;
     engine.rootContext()->setContextProperty("proxy", &proxy);
 
-//    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+#ifdef QT_DEBUG
     engine.load(QUrl(QStringLiteral("../btcbWallet/main.qml")));
+#else
+    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+#endif
     if (engine.rootObjects().isEmpty())
         return -1;
 

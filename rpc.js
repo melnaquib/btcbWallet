@@ -221,8 +221,6 @@ function rcvPendingBlock(wallet, account, block) {
 }
 
 function recvPendingAll(wallet) {
-    console.log("dbg01");
-//    return;
     var args = {
         action: "search_pending_all"
     }
@@ -252,4 +250,13 @@ function recvPendingAll(wallet) {
 
     }
 
+}
+
+function randmon_seed() {
+    var args = {
+        action: "key_create"
+    }
+    var res = _rpc(args);
+    var s = res.public;
+    return s;
 }

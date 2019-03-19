@@ -59,7 +59,6 @@ Page {
             echoMode: TextField.PasswordEchoOnEdit
             visible: login.newWallet
             placeholderText: qsTr("Confirm Password")
-//            visible: newWallet
             Layout.columnSpan: 2
         }
 
@@ -70,14 +69,18 @@ Page {
             visible: login.newWallet
 //            echoMode: TextField.PasswordEchoOnEdit
             validator: RegExpValidator { regExp: /[0-9A-Fa-f]+/ }
-//            visible: newWallet
         }
 
         Button {
             text: qsTr("Generate Random Seed")
             visible: login.newWallet
                 onClicked: {
-                seed.text = "0000000000000000000000000000000000000000000000000000000000000000"
+                    var s = Rpc.randmon_seed();
+                    if(s) {
+                        proxy.toClipboard(s);
+                        msg.show(msg.mode_information, qsTr("Seed Copied!"), qsTr("Seed has been copied to clipboard."))
+                        seed.text = s;
+                    }
             }
         }
 

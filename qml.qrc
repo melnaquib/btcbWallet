@@ -7,7 +7,6 @@
         <file>util.js</file>
         <file>MessageBox.qml</file>
         <file>BtcbImgBg.qml</file>
-        <file>LoginDialog.qml</file>
         <file>Send.qml</file>
         <file>Logo.qml</file>
         <file>AccountPage.qml</file>
